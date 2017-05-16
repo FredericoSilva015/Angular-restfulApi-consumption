@@ -7,8 +7,8 @@
     <title>Angular Training</title>
     <meta name="description" content="Angular Training">
     <meta name="author" content="Fredsite">
-    <link href="node_modules\bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
-    <link href="node_modules\bootstrap\dist\css\bootstrap-theme.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="app" ng-controller="myCtrl">
@@ -16,29 +16,38 @@
     </header>
     <section>
         <div class="row">
-            <div class="col-md-2"><button type="button" class="btn btn-sm btn-primary">ADD</button></div>
+            <div class="col-md-2">
+                <button type="button" ng-click="getList()" class="btn btn-sm btn-primary">Get List</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
+            </div>
+            <div class="col-md-2">
+                <input ng-model="id" class="form-control"></input>
+            </div>
         </div>
     </section>
     <section>
-        <div class="row" ng-repeat="data in table.data">
+        <div class="row" ng-repeat="data in data">
+            <div class="col-md-2">{{data.body}}</div>
             <div class="col-md-2">{{data.id}}</div>
-            <div class="col-md-2">{{data.first_name}}</div>
-            <div class="col-md-2">{{data.last_name}}</div>
-            <div class="col-md-2"><img src="{{data.avatar}}" alt="avatar" /></div>
+            <div class="col-md-2">{{data.title}}</div>
+            <div class="col-md-2">{{data.userId}}</div>
             <div class="col-md-2"><button type="button" class="btn btn-sm btn-default">Edit</button></div>
             <div class="col-md-2">
                 <div class="row">
-                    <div class="col-md-6"><button type="button" class="btn btn-sm btn-primary">Update</button></div>
                     <div class="col-md-6"><button type="button" class="btn btn-sm btn-danger">Delete</button></div>
                 </div>
             </div>
         </div>
     </section>
     <footer></footer>
-    <script src="node_modules\jquery\dist\jquery.slim.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
-    <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="solutionController.js"></script>
 </body>
 
