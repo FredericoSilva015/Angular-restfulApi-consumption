@@ -1,5 +1,4 @@
 app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
-
   //  request list of items, usualy this would go on automaticly, but i wanted to call on press, for automaticly, just remove getList wraper function
   $scope.getList = function() {
     $scope.tempValue = dados.query();
@@ -75,6 +74,17 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
     });
     result.splice(val, 1);
     $scope.data = result;
+  };
+
+  // add item
+  $scope.add = {
+    id: '',
+    title: '',
+    body: ''
+  };
+
+  $scope.addItem = function() {
+
   };
 
 }]);
