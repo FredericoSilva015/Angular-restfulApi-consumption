@@ -4,7 +4,7 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
     $scope.tempValue = dados.query();
     $scope.tempValue.$promise.then(function success(data) {
       $scope.data = data;
-      // append a new atribut to the object so it can have edit form
+      // append a new atribute to the object so it can have edit form
       for (var val in $scope.data) {
         $scope.data[val]['active'] = true;
       }
@@ -20,7 +20,6 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
   $scope.selectItem = function() {
     // id validation, possibly needs number validation
     if ($scope.id) {
-
       $scope.tempValue = dados.get({
         id: $scope.id
       });
@@ -86,5 +85,4 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
   $scope.addItem = function() {
 
   };
-
 }]);
