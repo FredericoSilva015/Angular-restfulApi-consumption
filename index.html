@@ -14,15 +14,15 @@
 <body ng-app="app" ng-controller="myCtrl">
   <header>
   </header>
-  <section>
+  <section class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-12">
         <button type="button" ng-click="getList()" class="btn btn-sm btn-primary">Get List</button>
       </div>
     </div>
     <div class="row">
       <form name="addData">
-        <div class="col-2">
+        <div class="col-md-12">
           <button type="submit" ng-submit="!addData.$valid && addItem()" class="btn btn-sm btn-primary">Add</button>
           <label>User ID<input id="addid" name="addid" ng-model="add.id" class="form-control" ng-required="true"></input></label>
           <label>Title<input id="additle" name="additle" ng-model="add.title" class="form-control" ng-required="true"></input></label>
@@ -31,7 +31,7 @@
       </form>
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-12">
         <button type="button" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
         <label>insert index<input ng-model="id" class="form-control"></input></label>
       </div>
@@ -39,20 +39,20 @@
   </section>
   <section>
     <div class="row" ng-repeat="data in data track by $index">
-      <div ng-show="data.active" class="col-md-2">{{data.id}}</div>
-      <div ng-show="data.active" class="col-md-2">{{data.userId}}</div>
-      <div ng-show="data.active" class="col-md-2">{{data.title}}</div>
-      <div ng-show="data.active" class="col-md-2">{{data.body}}</div>
+      <div ng-show="data.active" class="col-sm-2">{{data.id}}</div>
+      <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
+      <div ng-show="data.active" class="col-sm-2">{{data.title}}</div>
+      <div ng-show="data.active" class="col-sm-2">{{data.body}}</div>
       <form ng-show="!data.active" name="testform" novalidate>
         <input name="userid" type="text" ng-model="data.userId">
         <textarea ng-model="data.title"></textarea>
         <textarea ng-model="data.body"></textarea>
         <button ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
       </form>
-      <div class="col-md-2"><button ng-click="edit($index)" type="button" class="btn btn-sm btn-default">Edit</button></div>
-      <div class="col-md-2">
+      <div class="col-sm-2"><button ng-click="edit($index)" type="button" class="btn btn-sm btn-default">Edit</button></div>
+      <div class="col-sm-2">
         <div class="row">
-          <div class="col-md-6"><button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteItem($index)" type="button" class="btn btn-sm btn-danger">Delete</button></div>
+          <div class="col-sm-6"><button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteItem($index)" type="button" class="btn btn-sm btn-danger">Delete</button></div>
         </div>
       </div>
     </div>
