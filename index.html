@@ -31,10 +31,12 @@
       </form>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <button type="button" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
-        <label>insert index<input ng-model="id" class="form-control"></input></label>
-      </div>
+      <form name="update">
+        <div class="col-md-12">
+          <button type="submit" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
+          <label>insert index<input id="updateId" name="updateId" ng-model="id" class="form-control"></input></label>
+        </div>
+      </form>
     </div>
   </section>
   <section>
