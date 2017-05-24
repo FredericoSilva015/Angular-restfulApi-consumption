@@ -23,8 +23,8 @@
     <div class="row">
       <form name="addData">
         <div class="col-md-12">
-          <button type="submit" ng-submit="!addData.$valid && addItem()" class="btn btn-sm btn-primary">Add</button>
-          <label>User ID<input id="addid" name="addid" ng-model="add.id" class="form-control" ng-required="true"></input></label>
+          <button type="submit" ng-click="addData.$valid && addItem()" class="btn btn-sm btn-primary">Add</button>
+          <label>User ID<input id="addid" name="addid" ng-model="add.userId" class="form-control" ng-required="true"></input></label>
           <label>Title<input id="additle" name="additle" ng-model="add.title" class="form-control" ng-required="true"></input></label>
           <label>Body<input id="addbody" name="addbody" ng-model="add.body" class="form-control" ng-required="true"></input></label>
         </div>
