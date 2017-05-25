@@ -24,10 +24,10 @@ app.directive('ngConfirmClick', [
         var clickAction = attr.confirmedClick;
         element.bind('click', function(event) {
           if (window.confirm(msg)) {
-            scope.$eval(clickAction)
+            scope.$eval(clickAction);
           }
         });
       }
     };
   }
-])
+]);

@@ -6,12 +6,12 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
         $scope.data = data;
         // append a new atribute to the object so it can have edit form
         for (var val in $scope.data) {
-          $scope.data[val]['active'] = true;
+          $scope.data[val].active = true;
         }
         // for some reason i am getting a list of 101 items from the server, for that reason i clean the last value
         $scope.data = $scope.data.map(function(e) {
           return e;
-        })
+        });
         $scope.data.pop();
         // console.log($scope.data);
       },
@@ -35,7 +35,7 @@ app.controller('myCtrl', ['$scope', 'dados', function($scope, dados) {
         // add the data 1 level lower, so ng-repeat does not break
         $scope.data[0] = data;
         // add the hide functionality for html
-        $scope.data[0]['active'] = true;
+        $scope.data[0].active = true;
         // console.log($scope.data);
       }, function error(error) {
         // console.error(error);

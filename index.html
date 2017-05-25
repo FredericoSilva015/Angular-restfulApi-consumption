@@ -3,12 +3,13 @@
 <html lang="en">
 
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>Angular Training</title>
   <meta name="description" content="Angular Training">
   <meta name="author" content="Fredsite">
-  <link href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="public/css/all.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="app" ng-controller="myCtrl">
@@ -21,20 +22,20 @@
       </div>
     </div>
     <div class="row">
-      <form name="addData">
-        <div class="col-md-12">
+      <form name="addData" class="col-md-12">
+        <div>
           <button type="submit" ng-click="addData.$valid && addItem()" class="btn btn-sm btn-primary">Add</button>
-          <label>User ID<input id="addid" name="addid" ng-model="add.userId" class="form-control" ng-required="true"></input></label>
-          <label>Title<input id="additle" name="additle" ng-model="add.title" class="form-control" ng-required="true"></input></label>
-          <label>Body<input id="addbody" name="addbody" ng-model="add.body" class="form-control" ng-required="true"></input></label>
+          <label>User ID<input id="addid" name="addid" ng-model="add.userId" class="" ng-required="true"></input></label>
+          <label>Title<input id="additle" name="additle" ng-model="add.title" class="" ng-required="true"></input></label>
+          <label>Body<input id="addbody" name="addbody" ng-model="add.body" class="" ng-required="true"></input></label>
         </div>
       </form>
     </div>
     <div class="row">
-      <form name="update">
-        <div class="col-md-12">
+      <form name="update" class="col-md-12">
+        <div>
           <button type="submit" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
-          <label>insert index<input id="updateId" name="updateId" ng-model="id" class="form-control"></input></label>
+          <label>insert index<input id="updateId" name="updateId" ng-model="id" class=""></input></label>
         </div>
       </form>
     </div>
@@ -45,11 +46,11 @@
       <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.title}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.body}}</div>
-      <form ng-show="!data.active" name="testform" novalidate>
+      <form ng-show="!data.active" name="testform" class="col-sm-12" novalidate>
         <input name="userid" type="text" ng-model="data.userId">
         <textarea ng-model="data.title"></textarea>
         <textarea ng-model="data.body"></textarea>
-        <button ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
+        <button type="submit" ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
       </form>
       <div class="col-sm-2"><button ng-click="edit($index)" type="button" class="btn btn-sm btn-default">Edit</button></div>
       <div class="col-sm-2">
@@ -60,12 +61,10 @@
     </div>
   </section>
   <footer></footer>
-  <script src="assets/node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
-  <script src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="assets/js/generalAg.js"></script>
-  <script src="assets/js/solutionController.js"></script>
+  <script src="public/js/all.min.js"></script>
 </body>
 
 </html>
