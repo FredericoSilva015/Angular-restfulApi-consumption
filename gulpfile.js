@@ -18,6 +18,7 @@ gulp.task('lint', function() {
 gulp.task('js', function() {
   gulp.start('lint');
   return gulp.src(
+      // 'node_modules/jquery/dist/jquery.slim.min.js',
       'assets/js/*.js'
     )
     .pipe(concat('all.min.js'))
@@ -31,7 +32,9 @@ gulp.task('css', function() {
   return merge2(
       gulp.src('assets/less/*.less')
       .pipe(less()),
-      gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'])
+      gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+      ])
     )
     .pipe(concat('all.min.css'))
     .pipe(cleanCSS())
