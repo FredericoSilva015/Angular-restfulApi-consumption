@@ -15,7 +15,7 @@
 <body ng-app="app" ng-controller="myCtrl">
   <header>
   </header>
-  <section class="container">
+  <section class="container optContainer">
     <div class="row">
       <div class="col-md-12">
         <button type="button" ng-click="getList()" class="btn btn-sm btn-primary">Get List</button>
@@ -41,7 +41,7 @@
     </div>
   </section>
   <section class="container">
-    <div class="row" ng-repeat="data in data track by $index">
+    <div class="row item" ng-repeat="data in data track by $index">
       <div ng-show="data.active" class="col-sm-2">{{data.id}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.title}}</div>

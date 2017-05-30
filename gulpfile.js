@@ -32,11 +32,12 @@ gulp.task('js', function() {
 
 gulp.task('css', function() {
   return merge2(
-      gulp.src('assets/less/*.less')
-      .pipe(less()),
       gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-      ])
+      ]),
+      // better to put specifc styles after the general ones, this way they cascade and override, nonetheless its important to keep it has classes so they don't overlap with other properties
+      gulp.src('assets/less/*.less')
+      .pipe(less())
     )
     .pipe(concat('all.min.css'))
     .pipe(cleanCSS())
