@@ -17,10 +17,12 @@ gulp.task('lint', function() {
 
 gulp.task('js', function() {
   gulp.start('lint');
-  return gulp.src(
-      // 'node_modules/jquery/dist/jquery.slim.min.js',
+  // gulp.start('angular');
+  return gulp.src([
+      'node_modules/angular/angular.min.js',
+      'node_modules/angular-resource/angular-resource.min.js',
       'assets/js/*.js'
-    )
+    ])
     .pipe(concat('all.min.js'))
     .pipe(uglify({
       mangle: false
