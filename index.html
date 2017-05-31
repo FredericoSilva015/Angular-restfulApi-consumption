@@ -44,8 +44,8 @@
     <div class="row item" ng-repeat="data in data track by $index">
       <div ng-show="data.active" class="col-sm-2">{{data.id}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
-      <div ng-show="data.active" class="col-sm-2">{{data.title}}</div>
-      <div ng-show="data.active" class="col-sm-2">{{data.body}}</div>
+      <div ng-show="data.active" class="col-sm-2 maxHeight">{{data.title}}</div>
+      <div ng-show="data.active" class="col-sm-2 maxHeight">{{data.body}}</div>
       <form ng-show="!data.active" name="testform" class="col-sm-12" novalidate>
         <input name="userid" type="text" ng-model="data.userId">
         <textarea ng-model="data.title"></textarea>
