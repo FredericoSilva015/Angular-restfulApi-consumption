@@ -20,6 +20,7 @@ gulp.task('lint', function() {
 gulp.task('js',['clean-js'], function() {
   gulp.start('lint');
   return gulp.src([
+      //add by priority, angular depends of jquery, so jquery comes first
       'node_modules/jquery/dist/jquery.slim.min.js',
       'node_modules/angular/angular.min.js',
       'node_modules/angular-resource/angular-resource.min.js',
