@@ -7,7 +7,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css'),
-  rev = require('gulp-rev');
+  rev = require('gulp-rev'),
+  del = require('del');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -16,10 +17,10 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('js', function() {
+gulp.task('js',['clean-js'], function() {
   gulp.start('lint');
-  // gulp.start('angular');
   return gulp.src([
+      'node_modules/jquery/dist/jquery.slim.min.js',
       'node_modules/angular/angular.min.js',
       'node_modules/angular-resource/angular-resource.min.js',
       'assets/js/*.js'
@@ -28,10 +29,13 @@ gulp.task('js', function() {
     .pipe(uglify({
       mangle: false
     }))
-    .pipe(gulp.dest('public/js'));
+    .pipe(rev())
+    .pipe(gulp.dest('public/js'))
+    .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
+    .pipe(gulp.dest(''));
 });
 
-gulp.task('css', function() {
+gulp.task('css',['clean-css'], function() {
   return merge2(
       gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
@@ -42,10 +46,27 @@ gulp.task('css', function() {
     )
     .pipe(concat('all.min.css'))
     .pipe(cleanCSS())
-    .pipe(gulp.dest('public/css'));
+    .pipe(rev())
+    .pipe(gulp.dest('public/css'))
+    .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
+    .pipe(gulp.dest(''));
 });
 
-gulp.task('default', [
-  'js',
-  'css'
-]);
+gulp.task('clean-js', function() {
+  return del([
+    'public/js/*.js'
+  ]);
+});
+
+gulp.task('clean-css', function() {
+  return del([
+    'public/css/*.css'
+  ]);
+});
+
+gulp.task('default', ['js','css']);
+
+gulp.task('watch', function() {
+ gulp.watch('assets/js/**/*.js', ['js']);
+ gulp.watch('assets/css/**/*.css', ['css']);
+});

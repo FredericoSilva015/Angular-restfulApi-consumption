@@ -9,7 +9,7 @@
   <title>Angular Training</title>
   <meta name="description" content="Angular Training">
   <meta name="author" content="Fredsite">
-  <link href="public/css/all.min.css" rel="stylesheet">
+  <link href="public/css/all-8c9c1fa16b.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="app" ng-controller="myCtrl">
@@ -46,12 +46,14 @@
       <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
       <div ng-show="data.active" class="col-sm-2 maxHeight">{{data.title}}</div>
       <div ng-show="data.active" class="col-sm-2 maxHeight">{{data.body}}</div>
-      <form ng-show="!data.active" name="testform" class="col-sm-12" novalidate>
-        <input name="userid" type="text" ng-model="data.userId">
-        <textarea ng-model="data.title"></textarea>
-        <textarea ng-model="data.body"></textarea>
-        <button type="submit" ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
-      </form>
+        <form ng-show="!data.active" name="testform" class="col-sm-12" novalidate>
+          <div>
+            <input name="userid" type="text" ng-model="data.userId">
+            <textarea ng-model="data.title"></textarea>
+            <textarea ng-model="data.body"></textarea>
+            <button type="submit" ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
+          </div>
+        </form>
       <div class="col-sm-2"><button ng-click="edit($index)" type="button" class="btn btn-sm btn-default">Edit</button></div>
       <div class="col-sm-2">
         <div class="row">
@@ -61,8 +63,8 @@
     </div>
   </section>
   <footer></footer>
-  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-  <script src="public/js/all.min.js"></script>
+  <!-- <script src="node_modules/jquery/dist/jquery.slim.min.js"></script> -->
+  <script src="public/js/all-3568fa653a.min.js"></script>
 </body>
 
 </html>
