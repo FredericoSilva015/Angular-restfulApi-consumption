@@ -1,4 +1,5 @@
-// DEPRECATED
+// DEPRECATED security issue "?injecting HTML?"!!!
+// https://stackoverflow.com/questions/29226317/in-general-in-javascript-isnt-using-innerhtml-an-insecurity-issue
 
 document.addEventListener("DOMContentLoaded", function(event) {
 });

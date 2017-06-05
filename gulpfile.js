@@ -75,6 +75,6 @@ gulp.task('default', ['js','css','cache-bust']);
 
 
 gulp.task('watch', function() {
- gulp.watch('assets/js/**/*.js', ['js']);
- gulp.watch('assets/css/**/*.css', ['css']);
+ gulp.watch('assets/js/**/*.js', ['default']);
+ gulp.watch('assets/less/**/*.less', ['default']);
 });
