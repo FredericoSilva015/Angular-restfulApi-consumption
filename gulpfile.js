@@ -5,9 +5,9 @@ var gulp = require('gulp'),
   less = require('gulp-less'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  rename = require('gulp-rename'),
+  // rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css'),
-  rev = require('gulp-rev'),
+  rev = require('gulp-rev-append'),
   del = require('del');
 
 // Lint Task
@@ -30,10 +30,10 @@ gulp.task('js',['clean-js'], function() {
     .pipe(uglify({
       mangle: false
     }))
-    .pipe(rev())
-    .pipe(gulp.dest('public/js'))
-    .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
-    .pipe(gulp.dest(''));
+    // .pipe(rev())
+    .pipe(gulp.dest('public/js'));
+    // .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
+    // .pipe(gulp.dest(''));
 });
 
 gulp.task('css',['clean-css'], function() {
@@ -47,10 +47,10 @@ gulp.task('css',['clean-css'], function() {
     )
     .pipe(concat('all.min.css'))
     .pipe(cleanCSS())
-    .pipe(rev())
-    .pipe(gulp.dest('public/css'))
-    .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
-    .pipe(gulp.dest(''));
+    // .pipe(rev())
+    .pipe(gulp.dest('public/css'));
+    // .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
+    // .pipe(gulp.dest(''));
 });
 
 gulp.task('clean-js', function() {
@@ -65,7 +65,14 @@ gulp.task('clean-css', function() {
   ]);
 });
 
-gulp.task('default', ['js','css']);
+gulp.task('cache-bust',['js','css'], function() {
+  gulp.src('index.html')
+    .pipe(rev())
+    .pipe(gulp.dest('.'));
+});
+
+gulp.task('default', ['js','css','cache-bust']);
+
 
 gulp.task('watch', function() {
  gulp.watch('assets/js/**/*.js', ['js']);

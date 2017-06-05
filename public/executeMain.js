@@ -1,3 +1,5 @@
+// DEPRECATED
+
 document.addEventListener("DOMContentLoaded", function(event) {
 });
 loadXMLDoc()
@@ -55,3 +57,20 @@ function loadXMLDoc() {
     xmlhttp.open("GET", "public/rev-manifest.json", true);
     xmlhttp.send();
 }
+
+// jquery for the same code no CSS
+// $.getJSON('/solution2/public/rev-manifest.json', function (manifest) {
+// 	var s = document.getElementsByTagName('script')[0];
+//
+// 	var assetPath = function (src) {
+// 		// src = 'js/' + src + '.js'
+// 		return ['/solution2/public/js', manifest[src]].join('/');
+// 	};
+//
+//
+// 		var el = document.createElement('script');
+// 		el.async = true;
+// 		el.src = assetPath('all.min.js');
+// 		s.parentNode.insertBefore(el, s);
+//
+// })
