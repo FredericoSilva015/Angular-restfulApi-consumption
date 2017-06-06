@@ -5,7 +5,6 @@ var gulp = require('gulp'),
   less = require('gulp-less'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  // rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css'),
   rev = require('gulp-rev-append'),
   del = require('del');
@@ -17,10 +16,10 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('js',['clean-js'], function() {
-  gulp.start('lint');
+gulp.task('js',['lint'], function() {
+  // gulp.start('lint'); another way to call a task, but not good pactice in my opinion, use bracket one
   return gulp.src([
-      //add by priority, angular depends of jquery, so jquery comes first
+      //add by priority, angular depends of jquery, so jquery comes first, cascading style
       'node_modules/jquery/dist/jquery.slim.min.js',
       'node_modules/angular/angular.min.js',
       'node_modules/angular-resource/angular-resource.min.js',
@@ -36,11 +35,12 @@ gulp.task('js',['clean-js'], function() {
     // .pipe(gulp.dest(''));
 });
 
-gulp.task('css',['clean-css'], function() {
+gulp.task('css', function() {
   return merge2(
       gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
       ]),
+      // ATTENTION
       // better to put specifc styles after the general ones, this way they cascade and override, nonetheless its important to keep it has classes so they don't overlap with other properties
       gulp.src('assets/less/*.less')
       .pipe(less())
@@ -53,6 +53,7 @@ gulp.task('css',['clean-css'], function() {
     // .pipe(gulp.dest(''));
 });
 
+// these simply destroy the files generated previously, no need for these keeping for possible use in the future
 gulp.task('clean-js', function() {
   return del([
     'public/js/*.js'
@@ -65,12 +66,14 @@ gulp.task('clean-css', function() {
   ]);
 });
 
+// cache busting only starts when 'js' and 'css' tasks are finished
 gulp.task('cache-bust',['js','css'], function() {
   gulp.src('index.html')
     .pipe(rev())
     .pipe(gulp.dest('.'));
 });
 
+// default task, when calling gulp it will default to do the taskes in bracket
 gulp.task('default', ['js','css','cache-bust']);
 
 

@@ -1,5 +1,4 @@
-// DEPRECATED security issue "?injecting HTML?"!!!
-// https://stackoverflow.com/questions/29226317/in-general-in-javascript-isnt-using-innerhtml-an-insecurity-issue
+// DEPRECATED currently no use, but good to understand ajax calls through js
 
 document.addEventListener("DOMContentLoaded", function(event) {
 });
