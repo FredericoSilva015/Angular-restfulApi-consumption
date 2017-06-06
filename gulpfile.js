@@ -1,4 +1,4 @@
-// Include gulp
+// DEPENDENCIES
 var gulp = require('gulp'),
   merge2 = require('merge2'),
   jshint = require('gulp-jshint'),
@@ -8,6 +8,9 @@ var gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   rev = require('gulp-rev-append'),
   del = require('del');
+// -/-
+
+//TASKS
 
 // Lint Task
 gulp.task('lint', function() {
@@ -59,25 +62,30 @@ gulp.task('clean-js', function() {
     'public/js/*.js'
   ]);
 });
-
 gulp.task('clean-css', function() {
   return del([
     'public/css/*.css'
   ]);
 });
 
-// cache busting only starts when 'js' and 'css' tasks are finished
+
+
+// cache busting only starts when 'js' and 'css' tasks are finished, so if they havent started it inheritly calls them
 gulp.task('cache-bust',['js','css'], function() {
   gulp.src('index.html')
     .pipe(rev())
     .pipe(gulp.dest('.'));
 });
+// -/-
 
-// default task, when calling gulp it will default to do the taskes in bracket
-gulp.task('default', ['js','css','cache-bust']);
+// GULP COMMANDS
 
+// default for command 'gulp'
+gulp.task('default', ['cache-bust']);
 
+// watcher for command 'gulp watch'
 gulp.task('watch', function() {
- gulp.watch('assets/js/**/*.js', ['default']);
- gulp.watch('assets/less/**/*.less', ['default']);
+ gulp.watch('assets/js/**/*.js', ['cache-bust']);
+ gulp.watch('assets/less/**/*.less', ['cache-bust']);
 });
+// -/-
