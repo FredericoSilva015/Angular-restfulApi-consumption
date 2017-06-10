@@ -27,6 +27,7 @@ gulp.task('js',['lint'], function() {
       'node_modules/jquery/dist/jquery.slim.min.js',
       'node_modules/angular/angular.min.js',
       'node_modules/angular-resource/angular-resource.min.js',
+      'node_modules/angular-animate/angular-animate.min.js',
       'assets/js/*.js'
     ])
     .pipe(sourcemaps.init({largeFile: true}))

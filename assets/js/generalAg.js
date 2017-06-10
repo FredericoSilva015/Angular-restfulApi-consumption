@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource']);
+var app = angular.module('app', ['ngResource','ngAnimate']);
 
 
 app.factory("dados", function($resource) {
