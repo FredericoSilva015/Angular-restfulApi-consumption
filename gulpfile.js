@@ -7,7 +7,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   cleanCSS = require('gulp-clean-css'),
   rev = require('gulp-rev-append'),
-  del = require('del');
+  del = require('del'),
+  sourcemaps = require('gulp-sourcemaps');
 // -/-
 
 //TASKS
@@ -28,11 +29,13 @@ gulp.task('js',['lint'], function() {
       'node_modules/angular-resource/angular-resource.min.js',
       'assets/js/*.js'
     ])
+    .pipe(sourcemaps.init({largeFile: true}))
     .pipe(concat('all.min.js'))
     .pipe(uglify({
       mangle: false
     }))
     // .pipe(rev())
+    .pipe(sourcemaps.write('/maps'))
     .pipe(gulp.dest('public/js'));
     // .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
     // .pipe(gulp.dest(''));
@@ -48,9 +51,11 @@ gulp.task('css', function() {
       gulp.src('assets/less/*.less')
       .pipe(less())
     )
+    .pipe(sourcemaps.init({largeFile: true}))
     .pipe(concat('all.min.css'))
     .pipe(cleanCSS())
     // .pipe(rev())
+    .pipe(sourcemaps.write('/maps'))
     .pipe(gulp.dest('public/css'));
     // .pipe(rev.manifest('public/rev-manifest.json',{merge:true}))
     // .pipe(gulp.dest(''));
