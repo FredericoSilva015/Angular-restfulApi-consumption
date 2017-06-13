@@ -1,11 +1,34 @@
 var app = angular.module('app', ['ngResource','ngAnimate']);
 
+app.filter('searchFor', function(){
+  return function(vector,identifier){
+
+    // input validation, for the array and insert
+    if (!vector || !identifier) {
+      return vector;
+    }
+    else {
+
+      var result = [];
+
+      angular.forEach(vector,function(key){
+
+          if (key.id == identifier) {
+          result.push(key);
+          }
+
+      });
+
+      return result;
+    }
+
+  };
+});
 
 app.factory("dados", function($resource) {
   return $resource('https://jsonplaceholder.typicode.com/posts/:id', null, {
-    'update': {
-      method: 'PUT'
-    }
+    'update': {method: 'PUT'},
+    'query':{method:'GET', isArray:true}
   });
 
 });
@@ -16,8 +39,7 @@ app.factory("dados", function($resource) {
 //   'remove': {method:'DELETE'},
 //   'delete': {method:'DELETE'} }; // reserved possibly in IE6 use remove
 
-app.directive('ngConfirmClick', [
-  function() {
+app.directive('ngConfirmClick', [function() {
     return {
       link: function(scope, element, attr) {
         var msg = attr.ngConfirmClick || "Are you sure?";

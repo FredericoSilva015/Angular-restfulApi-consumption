@@ -9,12 +9,14 @@
   <title>Angular Training</title>
   <meta name="description" content="Angular Training">
   <meta name="author" content="Fredsite">
-  <link rel="stylesheet" type="text/css" href="public/css/all.min.css?rev=27cbfe59008b8c0e0866437e92570d82">
+  <link rel="stylesheet" type="text/css" href="public/css/all.min.css?rev=3cb24549293368e77d3ac3ccfaa9d42c">
 </head>
 
 <body ng-app="app" ng-controller="myCtrl">
+
   <header>
   </header>
+
   <section class="container optContainer">
     <div class="row">
       <div class="col-md-12">
@@ -32,16 +34,18 @@
       </form>
     </div>
     <div class="row">
-      <form name="update" class="col-md-12">
+      <!-- <form name="update" class="col-md-12">
         <div>
           <button type="submit" ng-click="selectItem()" class="btn btn-sm btn-primary">Select</button>
           <label>insert index<input id="updateId" name="updateId" ng-model="id" class=""></input></label>
         </div>
-      </form>
+      </form> -->
+      <input class="col-md-4" type="text" ng-model="identifier" placeholder="Enter Id" />
     </div>
   </section>
+
   <section class="container">
-    <div class="row item flex" ng-repeat="data in data track by $index">
+    <div class="animation row item flex" ng-repeat="data in data | searchFor:identifier">
       <div ng-show="data.active" class="col-sm-2">{{data.id}}</div>
       <div ng-show="data.active" class="col-sm-2">{{data.userId}}</div>
       <div ng-show="data.active" class="col-sm-2 maxHeight">{{data.title}}</div>
@@ -50,19 +54,21 @@
             <input name="userid" type="text" ng-model="data.userId">
             <textarea ng-model="data.title"></textarea>
             <textarea ng-model="data.body"></textarea>
-            <button type="submit" ng-click="submitItem($index)" class="btn btn-sm btn-default">submit</button>
+            <button type="submit" ng-click="submitItem(data.id)" class="btn btn-sm btn-default">submit</button>
         </form>
-      <div class="col-sm-2"><button ng-click="edit($index)" type="button" class="btn btn-sm btn-default">Edit</button></div>
+      <div class="col-sm-2"><button ng-click="edit(data.id)" type="button" class="btn btn-sm btn-default">Edit</button></div>
       <div class="col-sm-2">
         <div class="row">
-          <div class="col-sm-6"><button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteItem($index)" type="button" class="btn btn-sm btn-danger">Delete</button></div>
+          <div class="col-sm-6"><button ng-confirm-click="Are you sure to delete this record ?" confirmed-click="deleteItem(data.id)" type="button" class="btn btn-sm btn-danger">Delete</button></div>
         </div>
       </div>
     </div>
     <div id="myDiv"></div>
   </section>
+
   <footer></footer>
-  <script src="public/js/all.min.js?rev=767e67d45c36a3fb52efac69efed0030"></script>
+
+  <script src="public/js/all.min.js?rev=28c33ca78595da07930b3e292d263079"></script>
 </body>
 
 </html>
